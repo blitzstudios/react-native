@@ -199,6 +199,7 @@ public class ReactHorizontalScrollViewManager extends ViewGroupManager<ReactHori
   @Override
   public void scrollTo(
       ReactHorizontalScrollView scrollView, ReactScrollViewCommandHelper.ScrollToCommandData data) {
+    scrollView.abortAnimation();
     if (data.mAnimated) {
       scrollView.reactSmoothScrollTo(data.mDestX, data.mDestY);
     } else {
@@ -218,6 +219,7 @@ public class ReactHorizontalScrollViewManager extends ViewGroupManager<ReactHori
       throw new RetryableMountingLayerException(
           "scrollToEnd called on HorizontalScrollView without child");
     }
+    scrollView.abortAnimation();
     int right = child.getWidth() + scrollView.getPaddingRight();
     if (data.mAnimated) {
       scrollView.reactSmoothScrollTo(right, scrollView.getScrollY());

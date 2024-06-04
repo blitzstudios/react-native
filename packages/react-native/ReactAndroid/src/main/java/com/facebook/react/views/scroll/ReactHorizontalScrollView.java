@@ -222,6 +222,12 @@ public class ReactHorizontalScrollView extends HorizontalScrollView
     }
   }
 
+  public void abortAnimation() {
+    if (mScroller != null && !mScroller.isFinished()) {
+      mScroller.abortAnimation();
+    }
+  }
+
   public void setSnapInterval(int snapInterval) {
     mSnapInterval = snapInterval;
   }
